@@ -2,14 +2,10 @@
 
 This repository contains code for a number guessing game that is designed to demonstrate the principles of Q-learning, a form of reinforcement learning. Here's a breakdown of what each part of the program does:
 
-    Initialize the environment (initialize_game function):
-        This function initializes the game by returning the number 42 with a 99% probability. There's a 1% chance that it will return a different random number between 1 and 100 (excluding 42). This sets up a scenario where the learning algorithm mostly has to guess the same number, but occasionally has to adapt to a different target number.
-    Define the feedback mechanism (get_feedback function):
-        This function provides feedback to the learning agent about its guesses. If the guess is too low, it returns 'higher'; if too high, 'lower'; if correct, 'correct'.
-    Q-learning update rule (update_q_table function):
-        This function updates the Q-table, which is a representation of the expected utility of taking a given action in a given state. It takes into account the current state, action, reward, next state, learning rate (alpha), and discount factor (gamma). This function is at the heart of how the agent learns through Q-learning.
-    Reward function (calculate_reward function):
-        The reward function provides a numerical reward to the learning agent. In this case, it penalizes the agent with a negative reward based on how far off the guess is from the target number.
+1. Initialize the environment (initialize_game function):        This function initializes the game by returning the number 42 with a 99% probability. There's a 1% chance that it will return a different random number between 1 and 100 (excluding 42). This sets up a scenario where the learning algorithm mostly has to guess the same number, but occasionally has to adapt to a different target number.
+2. Define the feedback mechanism (get_feedback function):        This function provides feedback to the learning agent about its guesses. If the guess is too low, it returns 'higher'; if too high, 'lower'; if correct, 'correct'.
+3. Q-learning update rule (update_q_table function):        This function updates the Q-table, which is a representation of the expected utility of taking a given action in a given state. It takes into account the current state, action, reward, next state, learning rate (alpha), and discount factor (gamma). This function is at the heart of how the agent learns through Q-learning.
+4. Reward function (calculate_reward function):        The reward function provides a numerical reward to the learning agent. In this case, it penalizes the agent with a negative reward based on how far off the guess is from the target number.
 
 The main loop of the program runs the training process for a specified number of episodes. Within each episode, the target number is set by initialize_game, and the agent makes guesses until it correctly guesses the number or reaches a guess limit per episode (25 guesses here). The agent uses an epsilon-greedy policy to balance exploration (making a random guess) and exploitation (making the best guess based on the Q-table). The exploration rate (epsilon) starts at 1 (100% exploration) and decays over time to a minimum value, ensuring that as the agent learns, it increasingly relies on its knowledge rather than random guessing.
 
